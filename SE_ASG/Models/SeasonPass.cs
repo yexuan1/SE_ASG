@@ -1,3 +1,4 @@
+using SE_ASG.Models;
 using System;
 
 // Define the interface for the strategy
@@ -14,9 +15,27 @@ public class SeasonParking
 
     private ICalculateChargeStrategy _calChargeStrategy;
 
+    private StatusState Active;
+
+    private StatusState Expired;
+
+    private StatusState Terminated;
+
+    private StatusState state;
+
+    public void setState(StatusState state)
+    {
+        this.state = state;
+    }
+
     public SeasonParking(ICalculateChargeStrategy calChargeStrategy)
     {
         _calChargeStrategy = calChargeStrategy;
+        Active = new Active(this);
+        Expired = new Expired(this);
+        Terminated = new Terminated(this);
+
+        state = Active;
     }
 
     public decimal CalculateCharge()
