@@ -16,6 +16,9 @@ namespace SE_ASG.Models
     // Define the context class
     public class SeasonParking
     {
+        private Boolean IsPaid { get; set; }
+
+        private String PassType { get; set; }
         public int PassNumber { get; set; }
 
         public StatusState status;
