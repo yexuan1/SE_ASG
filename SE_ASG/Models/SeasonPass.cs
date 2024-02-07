@@ -11,6 +11,7 @@ public interface ICalculateChargeStrategy
 public class SeasonParking
 {
     public int PassNumber { get; set; }
+    
     public StatusState Status { get; set; }
 
     private ICalculateChargeStrategy _calChargeStrategy;

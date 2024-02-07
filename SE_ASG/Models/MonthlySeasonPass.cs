@@ -19,10 +19,9 @@ namespace SE_ASG.Models
 
         }
 
-        // TODO: Implement this method.
-        public void CalculateCharge()
+        public double CalculateCharge()
         {
-
+            return 0;
         }
     }
 }

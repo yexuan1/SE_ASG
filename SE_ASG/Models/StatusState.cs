@@ -8,16 +8,19 @@ namespace SE_ASG.Models
 {
     public interface StatusState
     {
-        public renewPass() { }
-        public terminatePass(Vehicle vehicle) { }
-        public transferPass() { }
-        public makePayment() { }
+        public void RenewPass();
 
+        public void TerminatePass();
+
+        public void TransferPass(Vehicle vehicle);
+
+        public void MakePayment();
     }
-     
+
     public class Active : StatusState
     {
         private bool parked { get; set; }
+        
         private SeasonParking myParking;
         
         public Active(SeasonParking parking)
@@ -25,22 +28,22 @@ namespace SE_ASG.Models
             myParking = parking;
         }
 
-        public void terminatePass()
+        public void TerminatePass()
         {
             
         }
 
-        public void transferPass(Vehicle vehicle) 
+        public void TransferPass(Vehicle vehicle) 
         {
         
         }
 
-        public void makePayment() 
+        public void MakePayment() 
         {
         
         }
 
-        public void renewPass()
+        public void RenewPass()
         {
 
         }
@@ -48,49 +51,50 @@ namespace SE_ASG.Models
     }
     public class Expired : StatusState 
     {
-        public void terminatePass()
+        public void TerminatePass()
         {
 
         }
 
-        public void transferPass(Vehicle vehicle)
+        public void TransferPass(Vehicle vehicle)
         {
 
         }
 
-        public void makePayment()
+        public void MakePayment()
         {
 
         }
 
-        public void renewPass()
+        public void RenewPass()
         {
 
         }
     }
+
     public class Terminated : StatusState
     {
-        public void generateRefund() 
+        public void GenerateRefund() 
         {
         
         }
 
-        public void terminatePass()
+        public void TerminatePass()
         {
 
         }
 
-        public void transferPass(Vehicle vehicle)
+        public void TransferPass(Vehicle vehicle)
         {
 
         }
 
-        public void makePayment()
+        public void MakePayment()
         {
 
         }
 
-        public void renewPass()
+        public void RenewPass()
         {
 
         }
