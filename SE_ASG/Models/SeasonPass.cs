@@ -1,7 +1,8 @@
-using SE_ASG.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SE_ASG.Models
 {
@@ -49,7 +50,7 @@ namespace SE_ASG.Models
     }
 
 
-    public enum StatusState
+    public enum IStatusState
     {
         Active,
         Expired,
