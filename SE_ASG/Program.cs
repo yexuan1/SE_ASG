@@ -49,8 +49,8 @@ void processSeasonPass()
     Console.WriteLine("Welcome admin! This is the new application for you to view");
     Console.WriteLine("===========================================================");
     Console.WriteLine("Application Details:");
-    Console.WriteLine("Name:Jerel Sim");
-    Console.WriteLine("StudentID:S10343578G");
+    Console.WriteLine("Name: Jerel Sim");
+    Console.WriteLine("StudentID: S10343578G");
     Console.WriteLine("Start month: A Date");
     Console.WriteLine("End month: A Date after Start month");
     Console.WriteLine("Vehicle type: Lorry");
@@ -59,9 +59,9 @@ void processSeasonPass()
     Console.WriteLine("===========================================================");
     while (return_to_main_menu)
     {
-        Console.WriteLine("Would you want to approve this application?");
-        Console.WriteLine("1. Approve");
-        Console.WriteLine("2. Deny");
+        Console.WriteLine("Please select an option:");
+        Console.WriteLine("1. Approve Application");
+        Console.WriteLine("2. Deny Application");
         string choice = Console.ReadLine();
         if (choice == "1")
         {
@@ -88,9 +88,8 @@ void processSeasonPass()
         }
         else
         {
-            Console.WriteLine("Please enter a valid response, not empty text");
+            Console.WriteLine("Invalid input. Please enter either '1' or '2'.");
         }
-
     }
 }
 

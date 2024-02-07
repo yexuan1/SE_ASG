@@ -66,8 +66,8 @@ namespace SE_ASG.Models
 
         public decimal CalculateCharge()
         {
-
-            return 0; // placeholder
+            // Implementation
+            return 0; 
         }
     }
 
@@ -76,8 +76,8 @@ namespace SE_ASG.Models
     {
         public decimal CalculateCharge()
         {
-
-            return 0; // placeholder
+            // Implementation
+            return 0; 
         }
     }
 
@@ -89,8 +89,8 @@ namespace SE_ASG.Models
 
         public decimal CalculateCharge()
         {
-
-            return 0; // placeholder
+            // Implementation
+            return 0; 
         }
     }
 
