@@ -20,9 +20,9 @@ namespace SE_ASG.Models
     public class Active : StatusState
     {
         private bool parked { get; set; }
-        
+
         private SeasonParking myParking;
-        
+
         public Active(SeasonParking parking)
         {
             myParking = parking;
@@ -31,95 +31,90 @@ namespace SE_ASG.Models
         public void TerminatePass(string reason)
         {
             Console.WriteLine("You have selected Terminate Pass.");
-            myParking.setState(terminated);
-            
-        }
-
-        public void TransferPass(Vehicle vehicle) 
-        {
-        
-        }
-
-        public void MakePayment() 
-        {
-        
-        }
-
-        public void RenewPass()
-        {
-
-        }
-
-        public static implicit operator global::StatusState(Active v)
-        {
-            throw new NotImplementedException();
-        }
-    }
-    public class Expired : StatusState 
-    {
-        private SeasonParking seasonParking;
-
-        public Expired(SeasonParking seasonParking)
-        {
-            this.seasonParking = seasonParking;
-        }
-
-        public void TerminatePass(string reason)
-        {
+            myParking.setState(myParking.terminated);
 
         }
 
         public void TransferPass(Vehicle vehicle)
         {
-
+            //Implementation
+            myParking.setState(myParking.active);
         }
 
         public void MakePayment()
         {
-
+            //Implementation
         }
 
         public void RenewPass()
         {
-
+            //Implementation
+            myParking.setState(myParking.active);
         }
 
-        public static implicit operator global::StatusState(Expired v)
+    }
+    public class Expired : StatusState
+    {
+        private SeasonParking myParking;
+
+        public Expired(SeasonParking parking)
         {
-            throw new NotImplementedException();
+            myParking = parking;
+        }
+
+        public void TerminatePass(string reason)
+        {
+            //Implementation
+        }
+
+        public void TransferPass(Vehicle vehicle)
+        {
+            //Implementation
+        }
+
+        public void MakePayment()
+        {
+            //Implementation
+        }
+
+        public void RenewPass()
+        {
+            //Implementation
         }
     }
 
     public class Terminated : StatusState
     {
-        public void GenerateRefund() 
+        private SeasonParking myParking;
+
+        public Terminated(SeasonParking parking)
         {
-        
+            myParking = parking;
+        }
+
+        public void GenerateRefund(float amount)
+        {
+            //Implementation
         }
 
         public void TerminatePass(string reason)
         {
-
+            //Implementation
         }
 
         public void TransferPass(Vehicle vehicle)
         {
-
+            //Implementation
         }
 
         public void MakePayment()
         {
-
+            //Implementation
         }
 
         public void RenewPass()
         {
-
-        }
-
-        public static implicit operator global::StatusState(Terminated v)
-        {
-            throw new NotImplementedException();
+            //Implementation
         }
     }
 }
