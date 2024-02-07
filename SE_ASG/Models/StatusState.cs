@@ -6,23 +6,93 @@ using System.Threading.Tasks;
 
 namespace SE_ASG.Models
 {
-    public class StatusState
+    public interface StatusState
     {
         public renewPass() { }
-        public terminatePass() { }
+        public terminatePass(Vehicle vehicle) { }
         public transferPass() { }
         public makePayment() { }
 
     }
-
+     
     public class Active : StatusState
     {
         private bool parked { get; set; }
+        private SeasonParking myParking;
+        
+        public Active(SeasonParking parking)
+        {
+            myParking = parking;
+        }
+
+        public void terminatePass()
+        {
+            
+        }
+
+        public void transferPass(Vehicle vehicle) 
+        {
+        
+        }
+
+        public void makePayment() 
+        {
+        
+        }
+
+        public void renewPass()
+        {
+
+        }
         
     }
-    public class Expired : StatusState { }
+    public class Expired : StatusState 
+    {
+        public void terminatePass()
+        {
+
+        }
+
+        public void transferPass(Vehicle vehicle)
+        {
+
+        }
+
+        public void makePayment()
+        {
+
+        }
+
+        public void renewPass()
+        {
+
+        }
+    }
     public class Terminated : StatusState
     {
-        public generateRefund() { }
+        public void generateRefund() 
+        {
+        
+        }
+
+        public void terminatePass()
+        {
+
+        }
+
+        public void transferPass(Vehicle vehicle)
+        {
+
+        }
+
+        public void makePayment()
+        {
+
+        }
+
+        public void renewPass()
+        {
+
+        }
     }
 }
