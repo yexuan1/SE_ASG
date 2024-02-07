@@ -12,6 +12,12 @@ namespace SE_ASG.Models
         private string description { get; set; }
         private string location { get; set; }
 
+        public Carpark(string CarParkNumber, string Description, string Location) 
+        {
+            CarParkNumber = carParkNumber;
+            Description = description;
+            Location = location;
+        }
 
     }
 }

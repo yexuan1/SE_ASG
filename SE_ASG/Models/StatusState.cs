@@ -8,13 +8,13 @@ namespace SE_ASG.Models
 {
     public interface StatusState
     {
-        public void RenewPass();
+        public void RenewPass(DateOnly newEndDate);
 
         public void TerminatePass(string reason);
 
         public void TransferPass(Vehicle vehicle);
 
-        public void MakePayment();
+        public bool MakePayment(float amount);
     }
 
     public class Active : StatusState
@@ -41,12 +41,13 @@ namespace SE_ASG.Models
             myParking.setState(myParking.active);
         }
 
-        public void MakePayment()
+        public bool MakePayment(float amount)
         {
             //Implementation
+            return true;
         }
 
-        public void RenewPass()
+        public void RenewPass(DateOnly newEndDate)
         {
             //Implementation
             myParking.setState(myParking.active);
@@ -74,12 +75,13 @@ namespace SE_ASG.Models
             myParking.setState(myParking.active);
         }
 
-        public void MakePayment()
+        public bool MakePayment(float amount)
         {
             //Implementation
+            return true;
         }
 
-        public void RenewPass()
+        public void RenewPass(DateOnly newEndDate)
         {
             //Implementation
             myParking.setState(myParking.active);
@@ -95,9 +97,11 @@ namespace SE_ASG.Models
             myParking = parking;
         }
 
-        public void GenerateRefund(float amount)
+        public float GenerateRefund()
         {
             //Implementation
+            float refundAmt = 0;
+            return refundAmt;
         }
 
         public void TerminatePass(string reason)
@@ -113,12 +117,13 @@ namespace SE_ASG.Models
             myParking.setState(myParking.active);
         }
 
-        public void MakePayment()
+        public bool MakePayment(float amount)
         {
             //Implementation
+            return true;
         }
 
-        public void RenewPass()
+        public void RenewPass(DateOnly newEndDate)
         {
             //Implementation
             myParking.setState(myParking.active);

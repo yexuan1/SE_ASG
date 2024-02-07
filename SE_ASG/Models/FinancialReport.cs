@@ -12,7 +12,7 @@ namespace SE_ASG.Models
 
         public FinancialReport()
         {
-
+            
         }
     }
 }

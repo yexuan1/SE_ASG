@@ -10,9 +10,9 @@ namespace SE_ASG.Models
     {
         private string paymentType {  get; set; }
 
-        public PaymentMethod()
+        public PaymentMethod(string PaymentType)
         {
-
+            paymentType = PaymentType;
         }
     }
 }

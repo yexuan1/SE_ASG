@@ -12,9 +12,10 @@ namespace SE_ASG.Models
 
         private DateOnly paymentDate {  get; set; }
 
-        public Payment()
+        public Payment(double Amount, DateOnly PaymentDate)
         {
-
+            amount = Amount;
+            paymentDate = PaymentDate;
         }
     }
 }

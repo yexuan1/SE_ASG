@@ -16,9 +16,11 @@ namespace SE_ASG.Models
 
         private double amount {  get; set; }
 
-        public ParkingCharge()
+        public ParkingCharge(int UniqueParkingNumber, DateTime EntryDateTime, DateTime ExitDateTime)
         {
-
+            UniqueParkingNumber = uniqueParkingNumber;
+            EntryDateTime = entryDateTime;
+            ExitDateTime = exitDateTime;
         }
     }
 }
