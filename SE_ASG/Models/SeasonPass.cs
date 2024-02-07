@@ -1,90 +1,94 @@
 using SE_ASG.Models;
 using System;
 
-// Define the interface for the strategy
-public interface ICalculateChargeStrategy
+namespace SE_ASG.Models
 {
-    decimal CalculateCharge();
-}
-
-// Define the context class
-public class SeasonParking
-{
-    public int PassNumber { get; set; }
-    
-    public StatusState Status { get; set; }
-
-    private ICalculateChargeStrategy _calChargeStrategy;
-
-    private StatusState Active;
-
-    private StatusState Expired;
-
-    private StatusState Terminated;
-
-    private StatusState state;
-
-    public void setState(StatusState state)
+    // Define the interface for the strategy
+    public interface ICalculateChargeStrategy
     {
-        this.state = state;
+        decimal CalculateCharge();
     }
 
-    public SeasonParking(ICalculateChargeStrategy calChargeStrategy)
+    // Define the context class
+    public class SeasonParking
     {
-        _calChargeStrategy = calChargeStrategy;
-        Active = new Active(this);
-        Expired = new Expired(this);
-        Terminated = new Terminated(this);
+        public int PassNumber { get; set; }
 
-        state = Active;
+        public StatusState Status { get; set; }
+
+        private ICalculateChargeStrategy _calChargeStrategy;
+
+        private StatusState active;
+
+        private StatusState expired;
+
+        private StatusState terminated;
+
+        public void setState(StatusState Status)
+        {
+            this.Status = Status;
+        }
+
+        public SeasonParking(ICalculateChargeStrategy calChargeStrategy)
+        {
+            active = new Active(this);
+            expired = new Expired(this);
+            terminated = new Terminated(this);
+            _calChargeStrategy = calChargeStrategy;
+
+
+            Status = active;
+        }
+
+
+        public decimal CalculateCharge()
+        {
+            return _calChargeStrategy.CalculateCharge();
+        }
     }
 
-    public decimal CalculateCharge()
+    // Define status state enum
+    public enum StatusState
     {
-        return _calChargeStrategy.CalculateCharge();
+        Active,
+        Inactive
     }
-}
 
-// Define status state enum
-public enum StatusState
-{
-    Active,
-    Inactive
-}
-
-// Define MonthlySeasonPass subclass
-public class MonthlySeasonPass : ICalculateChargeStrategy
-{
-    private DateTime StartDate { get; set; }
-    private DateTime EndDate { get; set; }
-    private int AvailablePasses { get; set; }
-
-    public decimal CalculateCharge()
+    // Define MonthlySeasonPass subclass
+    public class MonthlySeasonPass : ICalculateChargeStrategy
     {
-    
-        return 0; // placeholder
-    }
-}
+        private DateTime StartDate { get; set; }
+        private DateTime EndDate { get; set; }
+        private int AvailablePasses { get; set; }
 
-// Define NoPass subclass
-public class NoPass : ICalculateChargeStrategy
-{
-    public decimal CalculateCharge()
+        public decimal CalculateCharge()
+        {
+
+            return 0; // placeholder
+        }
+    }
+
+    // Define NoPass subclass
+    public class NoPass : ICalculateChargeStrategy
     {
-      
-        return 0; // placeholder
+        public decimal CalculateCharge()
+        {
+
+            return 0; // placeholder
+        }
     }
-}
 
-// Define DailySeasonPass subclass
-public class DailySeasonPass : ICalculateChargeStrategy
-{
-    private DateTime DateOfIssue { get; set; }
-    private decimal MaxDailyRate { get; set; }
-
-    public decimal CalculateCharge()
+    // Define DailySeasonPass subclass
+    public class DailySeasonPass : ICalculateChargeStrategy
     {
-    
-        return 0; // placeholder
+        private DateTime DateOfIssue { get; set; }
+        private decimal MaxDailyRate { get; set; }
+
+        public decimal CalculateCharge()
+        {
+
+            return 0; // placeholder
+        }
     }
+
 }

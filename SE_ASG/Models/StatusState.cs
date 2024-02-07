@@ -10,7 +10,7 @@ namespace SE_ASG.Models
     {
         public void RenewPass();
 
-        public void TerminatePass();
+        public void TerminatePass(string reason);
 
         public void TransferPass(Vehicle vehicle);
 
@@ -28,8 +28,10 @@ namespace SE_ASG.Models
             myParking = parking;
         }
 
-        public void TerminatePass()
+        public void TerminatePass(string reason)
         {
+            Console.WriteLine("You have selected Terminate Pass.");
+            myParking.setState(terminated);
             
         }
 
@@ -51,7 +53,7 @@ namespace SE_ASG.Models
     }
     public class Expired : StatusState 
     {
-        public void TerminatePass()
+        public void TerminatePass(string reason)
         {
 
         }
@@ -74,12 +76,12 @@ namespace SE_ASG.Models
 
     public class Terminated : StatusState
     {
-        public void GenerateRefund() 
+        public void GenerateRefund(float amount) 
         {
         
         }
 
-        public void TerminatePass()
+        public void TerminatePass(string reason)
         {
 
         }
