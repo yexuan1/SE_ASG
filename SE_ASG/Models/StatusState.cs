@@ -49,10 +49,21 @@ namespace SE_ASG.Models
         {
 
         }
-        
+
+        public static implicit operator global::StatusState(Active v)
+        {
+            throw new NotImplementedException();
+        }
     }
     public class Expired : StatusState 
     {
+        private SeasonParking seasonParking;
+
+        public Expired(SeasonParking seasonParking)
+        {
+            this.seasonParking = seasonParking;
+        }
+
         public void TerminatePass(string reason)
         {
 
@@ -71,12 +82,17 @@ namespace SE_ASG.Models
         public void RenewPass()
         {
 
+        }
+
+        public static implicit operator global::StatusState(Expired v)
+        {
+            throw new NotImplementedException();
         }
     }
 
     public class Terminated : StatusState
     {
-        public void GenerateRefund(float amount) 
+        public void GenerateRefund() 
         {
         
         }
@@ -99,6 +115,11 @@ namespace SE_ASG.Models
         public void RenewPass()
         {
 
+        }
+
+        public static implicit operator global::StatusState(Terminated v)
+        {
+            throw new NotImplementedException();
         }
     }
 }
