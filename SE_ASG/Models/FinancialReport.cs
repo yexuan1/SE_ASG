@@ -8,11 +8,11 @@ namespace SE_ASG.Models
 {
     public class FinancialReport
     {
-        private DateOnly month { get; set; }
+        public DateOnly Month { get; set; }
 
         public FinancialReport()
         {
-            
+            this.Month = DateOnly.FromDateTime(DateTime.Now);
         }
     }
 }
