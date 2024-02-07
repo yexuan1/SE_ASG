@@ -64,12 +64,14 @@ namespace SE_ASG.Models
 
         public void TerminatePass(string reason)
         {
-            //Implementation
+            Console.WriteLine("You have selected Terminate Pass.");
+            myParking.setState(myParking.terminated);
         }
 
         public void TransferPass(Vehicle vehicle)
         {
             //Implementation
+            myParking.setState(myParking.active);
         }
 
         public void MakePayment()
@@ -80,6 +82,7 @@ namespace SE_ASG.Models
         public void RenewPass()
         {
             //Implementation
+            myParking.setState(myParking.active);
         }
     }
 
@@ -100,11 +103,14 @@ namespace SE_ASG.Models
         public void TerminatePass(string reason)
         {
             //Implementation
+            Console.WriteLine("You have selected Terminate Pass.");
+            myParking.setState(myParking.terminated);
         }
 
         public void TransferPass(Vehicle vehicle)
         {
             //Implementation
+            myParking.setState(myParking.active);
         }
 
         public void MakePayment()
@@ -115,6 +121,7 @@ namespace SE_ASG.Models
         public void RenewPass()
         {
             //Implementation
+            myParking.setState(myParking.active);
         }
     }
 }
