@@ -1,13 +1,13 @@
 using SE_ASG.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace SE_ASG.Models
+// Define the interface for the strategy
+public interface ICalculateChargeStrategy
 {
-    // Define the interface for the strategy
-    public interface ICalculateChargeStrategy
-    {
-        decimal CalculateCharge();
-    }
+    decimal CalculateCharge();
+}
 
     // Define the context class
     public class SeasonParking
@@ -16,7 +16,7 @@ namespace SE_ASG.Models
 
         public StatusState Status { get; set; }
 
-        private ICalculateChargeStrategy _calChargeStrategy;
+    private ICalculateChargeStrategy _calChargeStrategy;
 
         private StatusState active;
 
@@ -29,48 +29,36 @@ namespace SE_ASG.Models
             this.Status = Status;
         }
 
-        public SeasonParking(ICalculateChargeStrategy calChargeStrategy)
-        {
-            active = new Active(this);
-            expired = new Expired(this);
-            terminated = new Terminated(this);
-            _calChargeStrategy = calChargeStrategy;
-
+    public SeasonParking(ICalculateChargeStrategy calChargeStrategy)
+    {
+        _calChargeStrategy = calChargeStrategy;
+        Active = new Active(this);
+        Expired = new Expired(this);
+        Terminated = new Terminated(this);
 
             Status = active;
         }
 
-
-        public decimal CalculateCharge()
-        {
-            return _calChargeStrategy.CalculateCharge();
-        }
-    }
-
-    // Define status state enum
-    public enum StatusState
+    public decimal CalculateCharge()
     {
-        Active,
-        Inactive
+        return _calChargeStrategy.CalculateCharge();
     }
+}
 
-    // Define MonthlySeasonPass subclass
-    public class MonthlySeasonPass : ICalculateChargeStrategy
-    {
-        private DateTime StartDate { get; set; }
-        private DateTime EndDate { get; set; }
-        private int AvailablePasses { get; set; }
+// Define status state enum
+public enum StatusState
+{
+    Active,
+    Inactive
+}
 
-        public decimal CalculateCharge()
-        {
+// Define MonthlySeasonPass subclass
+public class MonthlySeasonPass : ICalculateChargeStrategy
+{
+    private DateTime StartDate { get; set; }
+    private DateTime EndDate { get; set; }
+    private int AvailablePasses { get; set; }
 
-            return 0; // placeholder
-        }
-    }
-
-    // Define NoPass subclass
-    public class NoPass : ICalculateChargeStrategy
-    {
         public decimal CalculateCharge()
         {
 
@@ -78,11 +66,21 @@ namespace SE_ASG.Models
         }
     }
 
-    // Define DailySeasonPass subclass
-    public class DailySeasonPass : ICalculateChargeStrategy
+// Define NoPass subclass
+public class NoPass : ICalculateChargeStrategy
+{
+    public decimal CalculateCharge()
     {
-        private DateTime DateOfIssue { get; set; }
-        private decimal MaxDailyRate { get; set; }
+      
+        return 0; // placeholder
+    }
+}
+
+// Define DailySeasonPass subclass
+public class DailySeasonPass : ICalculateChargeStrategy
+{
+    private DateTime DateOfIssue { get; set; }
+    private decimal MaxDailyRate { get; set; }
 
         public decimal CalculateCharge()
         {
