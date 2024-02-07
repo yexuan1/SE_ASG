@@ -250,5 +250,65 @@ namespace SE_ASG
 
             Console.WriteLine("Successfully generated financial report.");
         }
+        void renewSeasonPass()
+        {
+            bool return_to_menu = true;
+            while (return_to_menu)
+            {
+                Console.WriteLine("=============Terminate Season Parking Pass============");
+                Console.WriteLine();
+                Console.WriteLine("---------------Valid Season Parking Passes------------");
+                Console.WriteLine("   Pass Number: 1                         Daily    ");
+                Console.WriteLine("   Pass Number: 2                         Monthly    ");
+                Console.WriteLine("   Pass Number: 3                         Monthly    ");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("Please select the Pass Number to be renewed. (Select 0 to go back to main menu)");
+                string pn = Console.ReadLine();
+                if (pn == "0")
+                {
+                    return_to_menu = false;
+                }
+                else if (pn == "1")
+                {
+                    Console.WriteLine($"Confirm to renew this pass {pn}? (Y/N)");
+                    string confirm = Console.ReadLine();
+                    if (confirm == "Y" || confirm == "y")
+                    {
+                        Console.WriteLine($"You have successfully renewed Pass number {pn}");
+                        return_to_menu = false;
+                    }
+                    else if (confirm == "N" || confirm == "n")
+                    {
+                        renewSeasonPass();
+                    }
+                }
+                else if (pn == "2")
+                {
+                    Console.WriteLine("The pass has expired. Please select a valid season parking pass.");
+                    renewSeasonPass();
+                }
+                else if (pn == "3")
+                {
+                    Console.WriteLine($"Confirm to renew this pass {pn}? (Y/N)");
+                    string confirm = Console.ReadLine();
+                    if (confirm == "Y" || confirm == "y")
+                    {
+                        Console.WriteLine($"You have successfully renewed Pass number {pn}");
+                        return_to_menu = false;
+                    }
+                    else if (confirm == "N" || confirm == "n")
+                    {
+                        renewSeasonPass();
+                    }
+                }
+                //validation
+                else
+                {
+                    Console.WriteLine("You have entered an invalid number");
+                    renewSeasonPass();
+                }
+            }
+        }
     }
 }
