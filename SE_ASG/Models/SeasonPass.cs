@@ -55,9 +55,9 @@ public enum StatusState
 // Define MonthlySeasonPass subclass
 public class MonthlySeasonPass : ICalculateChargeStrategy
 {
-    public DateTime StartDate { get; set; }
-    public DateTime EndDate { get; set; }
-    public int AvailablePasses { get; set; }
+    private DateTime StartDate { get; set; }
+    private DateTime EndDate { get; set; }
+    private int AvailablePasses { get; set; }
 
     public decimal CalculateCharge()
     {
@@ -79,8 +79,8 @@ public class NoPass : ICalculateChargeStrategy
 // Define DailySeasonPass subclass
 public class DailySeasonPass : ICalculateChargeStrategy
 {
-    public DateTime DateOfIssue { get; set; }
-    public decimal MaxDailyRate { get; set; }
+    private DateTime DateOfIssue { get; set; }
+    private decimal MaxDailyRate { get; set; }
 
     public decimal CalculateCharge()
     {
