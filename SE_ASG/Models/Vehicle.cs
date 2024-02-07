@@ -11,7 +11,7 @@ namespace SE_ASG.Models
         private string licensePlate { get; set; }
         private string vehicleType { get; set; }
         private string iuNumber { get; set; }
-        private PassType passType { get; set; }
+        private SeasonParking passType { get; set; }
 
     }
 }

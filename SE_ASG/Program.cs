@@ -22,7 +22,7 @@ while (isRunning)
     switch (input)
     {
         case "1":
-            
+            processSeasonPass();
             break;
         case "2":
             
@@ -42,5 +42,56 @@ while (isRunning)
             isRunning = false;
 
             break;
+    }
+}
+
+void processSeasonPass()
+{
+    bool return_to_main_menu = true;
+    Console.WriteLine("Welcome admin! This is the new application for you to view");
+    Console.WriteLine("===========================================================");
+    Console.WriteLine("Application Details:");
+    Console.WriteLine("Name:Jerel Sim");
+    Console.WriteLine("StudentID:S10343578G");
+    Console.WriteLine("Start month: A Date");
+    Console.WriteLine("End month: A Date after Start month");
+    Console.WriteLine("Vehicle type: Lorry");
+    Console.WriteLine("License plate number: S1241KFUCA");
+    Console.WriteLine("Unit Identifier: awleghasedoug ");
+    Console.WriteLine("===========================================================");
+    while (return_to_main_menu)
+    {
+        Console.WriteLine("Would you want to approve this application?");
+        Console.WriteLine("1. Approve");
+        Console.WriteLine("2. Deny");
+        string choice = Console.ReadLine();
+        if (choice == "1")
+        {
+            Console.WriteLine();
+            Console.WriteLine("==========================================");
+            Console.WriteLine("Approving Application...");
+            Console.WriteLine("Status updated from Pending to Approved");
+            Console.WriteLine("System notify user of application approval");
+            Console.WriteLine("System issue user seasonal pass");
+            Console.WriteLine("==========================================");
+            Console.WriteLine("Returning to Main menu.....");
+            return_to_main_menu = false;
+        }
+        else if (choice == "2")
+        {
+            Console.WriteLine();
+            Console.WriteLine("==========================================");
+            Console.WriteLine("Denying Application...");
+            Console.WriteLine("Status updated from Pending to Denied");
+            Console.WriteLine("System notify user of application Denial");
+            Console.WriteLine("==========================================");
+            Console.WriteLine("Returning to Main menu.....");
+            return_to_main_menu = false;
+        }
+        else
+        {
+            Console.WriteLine("Please enter a valid response, not empty text");
+        }
+
     }
 }

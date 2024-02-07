@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 // Define the interface for the strategy
-public interface ICalculateChargeStrategy
+public interface ICalculateCharge
 {
     decimal CalculateCharge();
 }
@@ -16,40 +16,30 @@ public interface ICalculateChargeStrategy
 
         public StatusState Status { get; set; }
 
-    private ICalculateChargeStrategy _calChargeStrategy;
+        private ICalculateCharge _calChargeStrategy;
 
-        private StatusState active;
-
-        private StatusState expired;
-
-        private StatusState terminated;
-
-        public void setState(StatusState Status)
+        public SeasonParking(ICalculateCharge calChargeStrategy)
         {
-            this.Status = Status;
+            _calChargeStrategy = calChargeStrategy;
         }
 
-    public SeasonParking(ICalculateChargeStrategy calChargeStrategy)
-    {
-        _calChargeStrategy = calChargeStrategy;
-        Active = new Active(this);
-        Expired = new Expired(this);
-        Terminated = new Terminated(this);
-
-            Status = active;
+        public void setState(StatusState status)
+        {
+            Status = status;
         }
 
-    public decimal CalculateCharge()
-    {
-        return _calChargeStrategy.CalculateCharge();
-    }
+        public decimal CalculateCharge()
+        {
+            return _calChargeStrategy.CalculateCharge();
+        }
 }
 
-// Define status state enum
+
 public enum StatusState
 {
     Active,
-    Inactive
+    Expired,
+    Terminated
 }
 
 
@@ -87,6 +77,6 @@ public class DailySeasonPass : ICalculateCharge
 
             return 0; // placeholder
         }
-    }
-
 }
+
+
