@@ -30,9 +30,8 @@ namespace SE_ASG.Models
 
         public void TerminatePass(string reason)
         {
-            Console.WriteLine("You have selected Terminate Pass.");
             myParking.setState(myParking.terminated);
-
+            Console.WriteLine("Your pass has now been terminated.");
         }
 
         public void TransferPass(Vehicle vehicle)
@@ -70,8 +69,8 @@ namespace SE_ASG.Models
 
         public void TerminatePass(string reason)
         {
-            Console.WriteLine("You have selected Terminate Pass.");
             myParking.setState(myParking.terminated);
+            Console.WriteLine("Your pass has now been terminated.");
         }
 
         public void TransferPass(Vehicle vehicle)
@@ -112,8 +111,6 @@ namespace SE_ASG.Models
         public void TerminatePass(string reason)
         {
             //Implementation
-            Console.WriteLine("You have selected Terminate Pass.");
-            myParking.setState(myParking.terminated);
         }
 
         public void TransferPass(Vehicle vehicle)

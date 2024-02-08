@@ -18,7 +18,7 @@ namespace SE_ASG.Models
     {
         private Boolean IsPaid { get; set; }
 
-        private String PassType { get; set; }
+        public String PassType { get; set; }
         public int PassNumber { get; set; }
 
         public StatusState status;
