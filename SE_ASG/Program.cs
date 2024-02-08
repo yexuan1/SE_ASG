@@ -255,7 +255,7 @@ namespace SE_ASG
             bool return_to_menu = true;
             while (return_to_menu)
             {
-                Console.WriteLine("=============Terminate Season Parking Pass============");
+                Console.WriteLine("=============Renew Season Parking Pass============");
                 Console.WriteLine();
                 Console.WriteLine("---------------Valid Season Parking Passes------------");
                 Console.WriteLine("   Pass Number: 1                         Daily    ");
