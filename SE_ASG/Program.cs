@@ -275,8 +275,32 @@ namespace SE_ASG
                     string confirm = Console.ReadLine();
                     if (confirm == "Y" || confirm == "y")
                     {
-                        Console.WriteLine($"You have successfully renewed Pass number {pn}");
-                        return_to_menu = false;
+                        Console.WriteLine("=============Renew Season Parking Pass============");
+                        Console.WriteLine();
+                        Console.WriteLine("---------------Payment Methods------------");
+                        Console.WriteLine("   1. Saved card *********9876                             ");
+                        Console.WriteLine("   2. Add new payment method (Visa/Master/PayPal)    ");
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        string payment = Console.ReadLine();
+                        if (payment == "1")
+                        {
+                            Console.WriteLine("");
+                            Console.WriteLine($"You have successfully renewed Pass number {pn}");
+                            return_to_menu = false;
+                        }
+                        else if (payment == "2")
+                        {
+                            Console.WriteLine("Enter card details:");
+                            Console.WriteLine($"You have successfully renewed Pass number {pn}");
+                            return_to_menu = false;
+                        }
+                        //validation
+                        else
+                        {
+                            Console.WriteLine("You have entered an invalid number");
+                            renewSeasonPass();
+                        }
                     }
                     else if (confirm == "N" || confirm == "n")
                     {
@@ -294,8 +318,42 @@ namespace SE_ASG
                     string confirm = Console.ReadLine();
                     if (confirm == "Y" || confirm == "y")
                     {
-                        Console.WriteLine($"You have successfully renewed Pass number {pn}");
-                        return_to_menu = false;
+                        Console.WriteLine("=============Renew Season Parking Pass============");
+                        Console.WriteLine();
+                        Console.WriteLine("---------------Payment Methods------------");
+                        Console.WriteLine("   1. Saved card *********9876                             ");
+                        Console.WriteLine("   2. Add new payment method (Visa/Master/PayPal)    ");
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        string payment = Console.ReadLine();
+                        if (payment == "1")
+                        {
+                            Console.WriteLine("");
+                            Console.WriteLine($"You have successfully renewed Pass number {pn}");
+                            return_to_menu = false;
+                        }
+                        else if (payment == "2")
+                        {
+                            Console.WriteLine("Enter card details:");
+                            string card = Console.ReadLine();
+                            if (card == "123")
+                            {
+
+                                Console.WriteLine($"You have successfully renewed Pass number {pn}");
+                                return_to_menu = false;
+                            }
+                            else
+                            {
+                                Console.WriteLine("You have entered an invalid card number");
+
+                            }
+                        }
+                        //validation
+                        else
+                        {
+                            Console.WriteLine("You have entered an invalid number");
+                            renewSeasonPass();
+                        }
                     }
                     else if (confirm == "N" || confirm == "n")
                     {
