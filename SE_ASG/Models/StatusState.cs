@@ -50,7 +50,12 @@ namespace SE_ASG.Models
         public void RenewPass(DateOnly newEndDate)
         {
             //Implementation
-            myParking.setState(myParking.active);
+            //myParking.setState(myParking.active);
+            DateOnly currentDate = DateOnly.FromDateTime(DateTime.Today);
+            DateOnly endDate = currentDate.AddMonths(1);
+            newEndDate = endDate;
+            Console.WriteLine($"End date has been updated to {newEndDate}");
+
         }
 
     }

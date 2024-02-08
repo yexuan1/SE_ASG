@@ -250,25 +250,31 @@ namespace SE_ASG
 
             Console.WriteLine("Successfully generated financial report.");
         }
-        void renewSeasonPass()
+        static void renewSeasonPass()
         {
             bool return_to_menu = true;
             while (return_to_menu)
             {
+                int[] passes = { 1, 2, 3 };
                 Console.WriteLine("=============Renew Season Parking Pass============");
                 Console.WriteLine();
                 Console.WriteLine("---------------Valid Season Parking Passes------------");
-                Console.WriteLine("   Pass Number: 1                         Daily    ");
-                Console.WriteLine("   Pass Number: 2                         Monthly    ");
-                Console.WriteLine("   Pass Number: 3                         Monthly    ");
+                Console.WriteLine("   Pass Number                                Type       ");
+                Console.WriteLine($"   Pass Number: {passes[0]}                         Daily      ");
+                Console.WriteLine($"   Pass Number: {passes[1]}                         Monthly    ");
+                Console.WriteLine($"   Pass Number: {passes[2]}                         Monthly    ");
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine("Please select the Pass Number to be renewed. (Select 0 to go back to main menu)");
+                Console.Write("Option:");
+
                 string pn = Console.ReadLine();
+                //Return back to main menu
                 if (pn == "0")
                 {
                     return_to_menu = false;
                 }
+                //Pass 1
                 else if (pn == "1")
                 {
                     Console.WriteLine($"Confirm to renew this pass {pn}? (Y/N)");
@@ -277,28 +283,59 @@ namespace SE_ASG
                     {
                         Console.WriteLine("=============Renew Season Parking Pass============");
                         Console.WriteLine();
-                        Console.WriteLine("---------------Payment Methods------------");
-                        Console.WriteLine("   1. Saved card *********9876                             ");
-                        Console.WriteLine("   2. Add new payment method (Visa/Master/PayPal)    ");
-                        Console.WriteLine();
+                        PaymentMethod savedCardPayment = new PaymentMethod("Saved card");
+
                         Console.WriteLine();
                         string payment = Console.ReadLine();
                         if (payment == "1")
                         {
+                            Console.WriteLine("System verifying payment transaction...");
                             Console.WriteLine("");
-                            Console.WriteLine($"You have successfully renewed Pass number {pn}");
+                            Console.WriteLine("Payment successful!");
+                            Console.WriteLine();
+                            //formatting date to 1 month after date of renewal
+                            DateOnly currentDate = DateOnly.FromDateTime(DateTime.Today);
+                            DateOnly endDate = currentDate.AddMonths(1);
+                            Active active = new Active(); // Create an instance of Active
+                                                          //string formattedDate = endDate.ToString("dd/MM/yyyy"); // Format newEndDate to "dd/MM/yyyy"
+                                                          //Console.WriteLine($"Renewal date: {formattedDate}");
+                            active.RenewPass(endDate);
+                            Console.WriteLine("");
                             return_to_menu = false;
                         }
                         else if (payment == "2")
                         {
                             Console.WriteLine("Enter card details:");
-                            Console.WriteLine($"You have successfully renewed Pass number {pn}");
-                            return_to_menu = false;
+                            string card = Console.ReadLine();
+                            if (card == "1234")
+                            {
+                                Console.WriteLine("System verifying payment transaction...");
+                                Console.WriteLine("");
+                                Console.WriteLine("Payment successful!");
+                                Console.WriteLine("");
+                                //formatting date to 1 month after date of renewal
+                                DateOnly currentDate = DateOnly.FromDateTime(DateTime.Today);
+                                DateOnly endDate = currentDate.AddMonths(1);
+                                Active active = new Active(); // Create an instance of Active
+                                //string formattedDate = endDate.ToString("dd/MM/yyyy"); // Format newEndDate to "dd/MM/yyyy"
+                                //Console.WriteLine($"Renewal date: {formattedDate}");
+                                active.RenewPass(endDate);
+                                Console.WriteLine("");
+                                return_to_menu = false;
+                            }
+                            //Validation
+                            else
+                            {
+                                Console.WriteLine("You have entered invalid card number");
+                                Console.WriteLine();
+                                renewSeasonPass();
+                            }
                         }
                         //validation
                         else
                         {
                             Console.WriteLine("You have entered an invalid number");
+                            Console.WriteLine();
                             renewSeasonPass();
                         }
                     }
@@ -307,11 +344,14 @@ namespace SE_ASG
                         renewSeasonPass();
                     }
                 }
+                //Pass 2
                 else if (pn == "2")
                 {
                     Console.WriteLine("The pass has expired. Please select a valid season parking pass.");
+                    Console.WriteLine();
                     renewSeasonPass();
                 }
+                //Pass 3
                 else if (pn == "3")
                 {
                     Console.WriteLine($"Confirm to renew this pass {pn}? (Y/N)");
@@ -320,38 +360,59 @@ namespace SE_ASG
                     {
                         Console.WriteLine("=============Renew Season Parking Pass============");
                         Console.WriteLine();
-                        Console.WriteLine("---------------Payment Methods------------");
-                        Console.WriteLine("   1. Saved card *********9876                             ");
-                        Console.WriteLine("   2. Add new payment method (Visa/Master/PayPal)    ");
-                        Console.WriteLine();
+                        PaymentMethod savedCardPayment = new PaymentMethod("Saved card");
+
                         Console.WriteLine();
                         string payment = Console.ReadLine();
                         if (payment == "1")
                         {
+                            Console.WriteLine("System verifying payment transaction...");
                             Console.WriteLine("");
-                            Console.WriteLine($"You have successfully renewed Pass number {pn}");
+                            Console.WriteLine("Payment successful!");
+                            Console.WriteLine();
+                            //formatting date to 1 month after date of renewal
+                            DateOnly currentDate = DateOnly.FromDateTime(DateTime.Today);
+                            DateOnly endDate = currentDate.AddMonths(1);
+                            Active active = new Active(); // Create an instance of Active
+                                                          //string formattedDate = endDate.ToString("dd/MM/yyyy"); // Format newEndDate to "dd/MM/yyyy"
+                                                          //Console.WriteLine($"Renewal date: {formattedDate}");
+                            active.RenewPass(endDate);
+                            Console.WriteLine("");
                             return_to_menu = false;
                         }
                         else if (payment == "2")
                         {
                             Console.WriteLine("Enter card details:");
                             string card = Console.ReadLine();
-                            if (card == "123")
+                            if (card == "1234")
                             {
-
-                                Console.WriteLine($"You have successfully renewed Pass number {pn}");
+                                Console.WriteLine("System verifying payment transaction...");
+                                Console.WriteLine("");
+                                Console.WriteLine("Payment successful!");
+                                Console.WriteLine();
+                                //formatting date to 1 month after date of renewal
+                                DateOnly currentDate = DateOnly.FromDateTime(DateTime.Today);
+                                DateOnly endDate = currentDate.AddMonths(1);
+                                Active active = new Active(); // Create an instance of Active
+                                //string formattedDate = endDate.ToString("dd/MM/yyyy"); // Format newEndDate to "dd/MM/yyyy"
+                                //Console.WriteLine($"Renewal date: {formattedDate}");
+                                active.RenewPass(endDate);
+                                Console.WriteLine("");
                                 return_to_menu = false;
                             }
+                            //Validation
                             else
                             {
-                                Console.WriteLine("You have entered an invalid card number");
-
+                                Console.WriteLine("You have entered invalid card number");
+                                Console.WriteLine();
+                                renewSeasonPass();
                             }
                         }
                         //validation
                         else
                         {
                             Console.WriteLine("You have entered an invalid number");
+                            Console.WriteLine();
                             renewSeasonPass();
                         }
                     }
@@ -364,6 +425,7 @@ namespace SE_ASG
                 else
                 {
                     Console.WriteLine("You have entered an invalid number");
+                    Console.WriteLine();
                     renewSeasonPass();
                 }
             }
