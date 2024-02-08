@@ -1,5 +1,6 @@
 ﻿using SE_ASG.Models;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
@@ -59,55 +60,126 @@ namespace SE_ASG.Models
         }
 
         static void processSeasonPass()
-        {
+        {  
+
             bool return_to_main_menu = true;
-            Console.WriteLine("Welcome admin! This is the new application for you to view");
-            Console.WriteLine("===========================================================");
-            Console.WriteLine("Application Details:");
-            Console.WriteLine("Name: Jerel Sim");
-            Console.WriteLine("StudentID: S10343578G");
-            Console.WriteLine("Start month: A Date");
-            Console.WriteLine("End month: A Date after Start month");
-            Console.WriteLine("Vehicle type: Lorry");
-            Console.WriteLine("License plate number: S1241KFUCA");
-            Console.WriteLine("Unit Identifier: awleghasedoug ");
-            Console.WriteLine("===========================================================");
             while (return_to_main_menu)
             {
-                Console.WriteLine("Please select an option:");
-                Console.WriteLine("1. Approve Application");
-                Console.WriteLine("2. Deny Application");
-                string choice = Console.ReadLine();
-                if (choice == "1")
+                // Define a list of applications
+                List<Dictionary<string, string>> applications = new List<Dictionary<string, string>>();
+
+                Dictionary<string, string> application1 = new Dictionary<string, string>();
+                application1.Add("Name", "Jerel Sim");
+                application1.Add("StudentID", "S10343578G");
+                application1.Add("Start month", "January");
+                application1.Add("End month", "March");
+                application1.Add("Vehicle type", "Lorry");
+                application1.Add("License plate number", "S1241KFUCA");
+                application1.Add("Unit Identifier", "awleghasedoug");
+                applications.Add(application1);
+
+
+                Dictionary<string, string> application2 = new Dictionary<string, string>();
+                application2.Add("Name", "Emily Chen");
+                application2.Add("StudentID", "S10343579G");
+                application2.Add("Start month", "February");
+                application2.Add("End month", "April");
+                application2.Add("Vehicle type", "Van");
+                application2.Add("License plate number", "S6789JKLCA");
+                application2.Add("Unit Identifier", "dserhegnkjdsf");
+                applications.Add(application2);
+
+                Dictionary<string, string> application3 = new Dictionary<string, string>();
+                application3.Add("Name", "Sophia Lee");
+                application3.Add("StudentID", "S10343580G");
+                application3.Add("Start month", "March");
+                application3.Add("End month", "May");
+                application3.Add("Vehicle type", "Car");
+                application3.Add("License plate number", "S9876XYZCA");
+                application3.Add("Unit Identifier", "gdfhsgdfh");
+                applications.Add(application3);
+
+                Dictionary<string, string> application4 = new Dictionary<string, string>();
+                application4.Add("Name", "Michael Wong");
+                application4.Add("StudentID", "S10343581G");
+                application4.Add("Start month", "April");
+                application4.Add("End month", "June");
+                application4.Add("Vehicle type", "Motorcycle");
+                application4.Add("License plate number", "S5432ABCMA");
+                application4.Add("Unit Identifier", "sdfjksdfh");
+                applications.Add(application4);
+
+                Dictionary<string, string> application5 = new Dictionary<string, string>();
+                application5.Add("Name", "Isabella Smith");
+                application5.Add("StudentID", "S10343582G");
+                application5.Add("Start month", "May");
+                application5.Add("End month", "July");
+                application5.Add("Vehicle type", "Truck");
+                application5.Add("License plate number", "S1111QWERCA");
+                application5.Add("Unit Identifier", "dfhsgfsh");
+                applications.Add(application5);
+
+                Console.WriteLine("Welcome admin! This is the new application for you to view");
+                Console.WriteLine("===========================================================");
+                // Iterate through the list of applications and print details with index
+                for (int i = 0; i < applications.Count; i++)
                 {
-                    Console.WriteLine();
-                    Console.WriteLine("==========================================");
-                    Console.WriteLine("Approving Application...");
-                    Console.WriteLine("Status updated from Pending to Approved");
-                    Console.WriteLine("System notify user of application approval");
-                    Console.WriteLine("System issue user seasonal pass");
-                    Console.WriteLine("==========================================");
-                    Console.WriteLine("Returning to Main menu.....");
-                    return_to_main_menu = false;
+                    Console.WriteLine($"Application {i + 1} Details:");
+                    foreach (var detail in applications[i])
+                    {
+                        Console.WriteLine($"{detail.Key}: {detail.Value}");
+                    }
+                    Console.WriteLine("===========================================================");
                 }
-                else if (choice == "2")
+
+                Console.WriteLine("Please select an application to process (enter the number 1 to 5):");
+                string choice = Console.ReadLine();
+
+                if (int.TryParse(choice, out int index) && index >= 1 && index <= applications.Count)
                 {
                     Console.WriteLine();
-                    Console.WriteLine("==========================================");
-                    Console.WriteLine("Denying Application...");
-                    Console.WriteLine("Status updated from Pending to Denied");
-                    Console.WriteLine("System notify user of application Denial");
-                    Console.WriteLine("==========================================");
-                    Console.WriteLine("Returning to Main menu.....");
-                    return_to_main_menu = false;
+                    Console.WriteLine("You selected Application " + index);
+                    Console.WriteLine("1. Approve Application");
+                    Console.WriteLine("2. Deny Application");
+                    string actionChoice = Console.ReadLine();
+
+                    if (actionChoice == "1")
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("==========================================");
+                        Console.WriteLine("Approving Application...");
+                        Console.WriteLine("Status updated from Pending to Approved");
+                        Console.WriteLine("System notify user of application approval");
+                        Console.WriteLine("System issue user seasonal pass");
+                        Console.WriteLine("==========================================");
+                    }
+                    else if (actionChoice == "2")
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("==========================================");
+                        Console.WriteLine("Denying Application...");
+                        Console.WriteLine("Status updated from Pending to Denied");
+                        Console.WriteLine("System notify user of application Denial");
+                        Console.WriteLine("==========================================");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input. Please enter either '1' or '2'.");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Invalid input. Please enter either '1' or '2'.");
+                    Console.WriteLine($"Invalid input. Please enter a number from 1 to {applications.Count}.");
+                }
+
+                Console.WriteLine("Do you want to process another application? (yes/no):");
+                string continueChoice = Console.ReadLine();
+                if (continueChoice.ToLower() != "yes")
+                {
+                    return_to_main_menu = false;
                 }
             }
         }
-
         static void terminateSeasonPass()
         {
             bool return_to_menu = true;
@@ -312,10 +384,10 @@ namespace SE_ASG.Models
                             //formatting date to 1 month after date of renewal
                             DateOnly currentDate = DateOnly.FromDateTime(DateTime.Today);
                             DateOnly endDate = currentDate.AddMonths(1);
-                            Active active = new Active(); // Create an instance of Active
+                            //Active active = new Active(); // Create an instance of Active
                                                           //string formattedDate = endDate.ToString("dd/MM/yyyy"); // Format newEndDate to "dd/MM/yyyy"
                                                           //Console.WriteLine($"Renewal date: {formattedDate}");
-                            active.RenewPass(endDate);
+                            //active.RenewPass(endDate);
                             Console.WriteLine("");
                             return_to_menu = false;
                         }
@@ -332,10 +404,10 @@ namespace SE_ASG.Models
                                 //formatting date to 1 month after date of renewal
                                 DateOnly currentDate = DateOnly.FromDateTime(DateTime.Today);
                                 DateOnly endDate = currentDate.AddMonths(1);
-                                Active active = new Active(); // Create an instance of Active
+                                //Active active = new Active(); // Create an instance of Active
                                 //string formattedDate = endDate.ToString("dd/MM/yyyy"); // Format newEndDate to "dd/MM/yyyy"
                                 //Console.WriteLine($"Renewal date: {formattedDate}");
-                                active.RenewPass(endDate);
+                                //active.RenewPass(endDate);
                                 Console.WriteLine("");
                                 return_to_menu = false;
                             }
@@ -389,10 +461,10 @@ namespace SE_ASG.Models
                             //formatting date to 1 month after date of renewal
                             DateOnly currentDate = DateOnly.FromDateTime(DateTime.Today);
                             DateOnly endDate = currentDate.AddMonths(1);
-                            Active active = new Active(); // Create an instance of Active
+                           // Active active = new Active(); // Create an instance of Active
                                                           //string formattedDate = endDate.ToString("dd/MM/yyyy"); // Format newEndDate to "dd/MM/yyyy"
                                                           //Console.WriteLine($"Renewal date: {formattedDate}");
-                            active.RenewPass(endDate);
+                            //active.RenewPass(endDate);
                             Console.WriteLine("");
                             return_to_menu = false;
                         }
@@ -409,10 +481,10 @@ namespace SE_ASG.Models
                                 //formatting date to 1 month after date of renewal
                                 DateOnly currentDate = DateOnly.FromDateTime(DateTime.Today);
                                 DateOnly endDate = currentDate.AddMonths(1);
-                                Active active = new Active(); // Create an instance of Active
+                                //Active active = new Active(); // Create an instance of Active
                                 //string formattedDate = endDate.ToString("dd/MM/yyyy"); // Format newEndDate to "dd/MM/yyyy"
                                 //Console.WriteLine($"Renewal date: {formattedDate}");
-                                active.RenewPass(endDate);
+                                //active.RenewPass(endDate);
                                 Console.WriteLine("");
                                 return_to_menu = false;
                             }
