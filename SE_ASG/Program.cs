@@ -183,85 +183,101 @@ namespace SE_ASG.Models
         static void terminateSeasonPass()
         {
             bool return_to_menu = true;
+            Random random = new Random();
+            int randomNum = random.Next(1, 3); //random to simulate if there is no season parking pass
             while (return_to_menu)
             {
-                
-                Console.WriteLine("=============Terminate Season Parking Pass============");
-                Console.WriteLine();
-                Console.WriteLine("---------------Valid Season Parking Passes------------");
-                Console.WriteLine("   Pass Number: 5          Monthly             Valid  ");
-                Console.WriteLine("   Pass Number: 78          Daily             Expired ");
-                Console.WriteLine("   Pass Number: 90         Monthly             Valid  ");
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine("Please Select the Pass Number to terminate (to abort enter 0) : ");
-                string passNo = Console.ReadLine();
-                if (passNo == "5" || passNo == "90")
-                {
-                    ICalculateCharge calculateCharge = null;
-                    SeasonParking seasonParking = new SeasonParking(calculateCharge);
-                    Active active = new Active(seasonParking);
-                    Expired expired = new Expired(seasonParking);
-                    Terminated terminated = new Terminated(seasonParking);
-                    Console.WriteLine("System has verified that the parking pass selected is a Monthly Pass");
+                if (randomNum == 1) 
+                { 
+                    Console.WriteLine("=============Terminate Season Parking Pass============");
                     Console.WriteLine();
-                    Console.WriteLine("Please enter the reason for pass termination: ");
-                    string reason = Console.ReadLine();
-                    Console.WriteLine("To Confirm Pass Termination Enter 1 OR 0 to abort");
-                    string confirm = Console.ReadLine();
+                    Console.WriteLine("---------------All Season Parking Passes--------------");
+                    Console.WriteLine("     Pass Number          Pass Type            Status ");
+                    Console.WriteLine("   Pass Number: 5          Monthly             Valid  ");
+                    Console.WriteLine("   Pass Number: 78          Daily             Expired ");
+                    Console.WriteLine("   Pass Number: 90         Monthly             Valid  ");
                     Console.WriteLine();
-                    if (confirm == "1")
+                    Console.WriteLine();
+                    Console.WriteLine("Please Select the Pass Number to terminate (to abort enter 0) : ");
+                    string passNo = Console.ReadLine();
+                    if (passNo == "5" || passNo == "90")
                     {
-                        active.TerminatePass(reason);
-                        seasonParking.setState(terminated);
-                        Console.WriteLine($"Terminating Pass No. {passNo}");
+                        ICalculateCharge calculateCharge = null;
+                        SeasonParking seasonParking = new SeasonParking(calculateCharge);
+                        Active active = new Active(seasonParking);
+                        Expired expired = new Expired(seasonParking);
+                        Terminated terminated = new Terminated(seasonParking);
+                        Console.WriteLine("System has verified that the parking pass selected is a Monthly Pass");
                         Console.WriteLine();
-                        Console.WriteLine("System has calculated and refunded the unused months into the user's account");
-                        Console.WriteLine("System has updated the pass status to terminated and the number of available monthly season passes has been increased by 1");
-                        Console.WriteLine("System increased Number of available monthly season passes by 1") ;
+                        Console.WriteLine("Please enter the reason for pass termination: ");
+                        string reason = Console.ReadLine();
+                        Console.WriteLine("To Confirm Pass Termination Enter 1 OR 0 to abort");
+                        string confirm = Console.ReadLine();
                         Console.WriteLine();
-                        Console.WriteLine("Thank You for using the Monthly Season Parking Pass!");
-                        Console.WriteLine();
-                        return_to_menu = false;
-                    }
-                    else if (confirm == "0")
-                    {
-                        Console.WriteLine("Aborting....");
-                        Console.WriteLine();
-                        return_to_menu = false;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid Input");
-                        Console.WriteLine();
-                    }
+                        if (confirm == "1")
+                        {
+                            active.TerminatePass(reason);
+                            seasonParking.setState(terminated);
+                            Console.WriteLine($"Terminating Pass No. {passNo}");
+                            Console.WriteLine();
+                            Console.WriteLine("System has calculated and refunded the unused months into the user's account");
+                            Console.WriteLine("System has updated the pass status to terminated and the number of available monthly season passes has been increased by 1");
+                            Console.WriteLine("System increased Number of available monthly season passes by 1") ;
+                            Console.WriteLine();
+                            Console.WriteLine("Thank You for using the Monthly Season Parking Pass!");
+                            Console.WriteLine();
+                            return_to_menu = false;
+                        }
+                        else if (confirm == "0")
+                        {
+                            Console.WriteLine("Aborting....");
+                            Console.WriteLine();
+                            return_to_menu = false;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Input");
+                            Console.WriteLine();
+                        }
 
-                }
-                else if (passNo == "78")
-                {
-                    ICalculateCharge calculateCharge = null;
-                    SeasonParking seasonParking = new SeasonParking(calculateCharge);
-                    Active active = new Active(seasonParking);
-                    Expired expired = new Expired(seasonParking);
-                    Terminated terminated = new Terminated(seasonParking);
-                    Console.WriteLine("System has verified that the parking pass selected is a Daily Pass");
-                    Console.WriteLine();
-                    Console.WriteLine("Please enter the reason for pass termination: ");
-                    string reason = Console.ReadLine();
-                    Console.WriteLine("To Confirm Pass Termination Enter 1 OR 0 to abort");
-                    string confirm = Console.ReadLine();
-                    Console.WriteLine();
-                    if (confirm == "1")
-                    {
-                        expired.TerminatePass(reason);
-                        seasonParking.setState(terminated);
-                        Console.WriteLine($"Terminating Pass No. {passNo}");
-                        Console.WriteLine();
-                        Console.WriteLine("Thank You for using the Daily Season Parking Pass!");
-                        Console.WriteLine();
-                        return_to_menu = false;
                     }
-                    else if (confirm == "0")
+                    else if (passNo == "78")
+                    {
+                        ICalculateCharge calculateCharge = null;
+                        SeasonParking seasonParking = new SeasonParking(calculateCharge);
+                        Active active = new Active(seasonParking);
+                        Expired expired = new Expired(seasonParking);
+                        Terminated terminated = new Terminated(seasonParking);
+                        Console.WriteLine("System has verified that the parking pass selected is a Daily Pass");
+                        Console.WriteLine();
+                        Console.WriteLine("Please enter the reason for pass termination: ");
+                        string reason = Console.ReadLine();
+                        Console.WriteLine("To Confirm Pass Termination Enter 1 OR 0 to abort");
+                        string confirm = Console.ReadLine();
+                        Console.WriteLine();
+                        if (confirm == "1")
+                        {
+                            expired.TerminatePass(reason); // pass is expired 
+                            seasonParking.setState(terminated);
+                            Console.WriteLine($"Terminating Pass No. {passNo}");
+                            Console.WriteLine();
+                            Console.WriteLine("Thank You for using the Daily Season Parking Pass!");
+                            Console.WriteLine();
+                            return_to_menu = false;
+                        }
+                        else if (confirm == "0")
+                        {
+                            Console.WriteLine("Aborting....");
+                            Console.WriteLine();
+                            return_to_menu = false;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Input");
+                            Console.WriteLine();
+                        }
+                    }
+                    else if (passNo == "0")
                     {
                         Console.WriteLine("Aborting....");
                         Console.WriteLine();
@@ -273,16 +289,13 @@ namespace SE_ASG.Models
                         Console.WriteLine();
                     }
                 }
-                else if (passNo == "0")
-                {
-                    Console.WriteLine("Aborting....");
-                    Console.WriteLine();
-                    return_to_menu = false;
-                }
+
                 else
                 {
-                    Console.WriteLine("Invalid Input");
+                    Console.WriteLine("Error: You have no Season Parking Passes. Thanks!");
+                    Console.WriteLine("Returning to Main Menu....");
                     Console.WriteLine();
+                    return_to_menu = false;
                 }
 
             }
