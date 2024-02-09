@@ -29,7 +29,8 @@ namespace SE_ASG.Models
                 Console.WriteLine("3. Transfer Season Pass");
                 Console.WriteLine("4. Terminate Season Pass");
                 Console.WriteLine("5. Apply Season Pass");
-                Console.WriteLine("6. Exit");
+                Console.WriteLine("6. Renew Season Pass");
+                Console.WriteLine("7. Exit");
                 string input = Console.ReadLine();
 
                 switch (input)
@@ -49,8 +50,10 @@ namespace SE_ASG.Models
                         break;
                     case "5":
 
-                        break;
                     case "6":
+                        RenewSeasonPass();
+                        break;
+                    case "7":
                         Console.WriteLine("Exiting....");
                         isRunning = false;
 
@@ -331,7 +334,7 @@ namespace SE_ASG.Models
 
             Console.WriteLine("Successfully generated financial report.");
         }
-        static void renewSeasonPass()
+        static void RenewSeasonPass()
         {
             bool return_to_menu = true;
             while (return_to_menu)
@@ -378,8 +381,8 @@ namespace SE_ASG.Models
                             DateOnly currentDate = DateOnly.FromDateTime(DateTime.Today);
                             DateOnly endDate = currentDate.AddMonths(1);
                             Active active = new(); // Create an instance of Active
-                                                          //string formattedDate = endDate.ToString("dd/MM/yyyy"); // Format newEndDate to "dd/MM/yyyy"
-                                                          //Console.WriteLine($"Renewal date: {formattedDate}");
+                                                   //string formattedDate = endDate.ToString("dd/MM/yyyy"); // Format newEndDate to "dd/MM/yyyy"
+                                                   //Console.WriteLine($"Renewal date: {formattedDate}");
                             active.RenewPass(endDate);
                             Console.WriteLine("");
                             return_to_menu = false;
@@ -409,7 +412,7 @@ namespace SE_ASG.Models
                             {
                                 Console.WriteLine("You have entered invalid card number");
                                 Console.WriteLine();
-                                renewSeasonPass();
+                                RenewSeasonPass();
                             }
                         }
                         //validation
@@ -417,12 +420,12 @@ namespace SE_ASG.Models
                         {
                             Console.WriteLine("You have entered an invalid number");
                             Console.WriteLine();
-                            renewSeasonPass();
+                            RenewSeasonPass();
                         }
                     }
                     else if (confirm == "N" || confirm == "n")
                     {
-                        renewSeasonPass();
+                        RenewSeasonPass();
                     }
                 }
                 //Pass 2
@@ -430,7 +433,7 @@ namespace SE_ASG.Models
                 {
                     Console.WriteLine("The pass has expired. Please select a valid season parking pass.");
                     Console.WriteLine();
-                    renewSeasonPass();
+                    RenewSeasonPass();
                 }
                 //Pass 3
                 else if (pn == "3")
@@ -455,8 +458,8 @@ namespace SE_ASG.Models
                             DateOnly currentDate = DateOnly.FromDateTime(DateTime.Today);
                             DateOnly endDate = currentDate.AddMonths(1);
                             Active active = new(); // Create an instance of Active
-                                                          //string formattedDate = endDate.ToString("dd/MM/yyyy"); // Format newEndDate to "dd/MM/yyyy"
-                                                          //Console.WriteLine($"Renewal date: {formattedDate}");
+                                                   //string formattedDate = endDate.ToString("dd/MM/yyyy"); // Format newEndDate to "dd/MM/yyyy"
+                                                   //Console.WriteLine($"Renewal date: {formattedDate}");
                             active.RenewPass(endDate);
                             Console.WriteLine("");
                             return_to_menu = false;
@@ -486,7 +489,7 @@ namespace SE_ASG.Models
                             {
                                 Console.WriteLine("You have entered invalid card number");
                                 Console.WriteLine();
-                                renewSeasonPass();
+                                RenewSeasonPass();
                             }
                         }
                         //validation
@@ -494,12 +497,12 @@ namespace SE_ASG.Models
                         {
                             Console.WriteLine("You have entered an invalid number");
                             Console.WriteLine();
-                            renewSeasonPass();
+                            RenewSeasonPass();
                         }
                     }
                     else if (confirm == "N" || confirm == "n")
                     {
-                        renewSeasonPass();
+                        RenewSeasonPass();
                     }
                 }
                 //validation
@@ -507,7 +510,7 @@ namespace SE_ASG.Models
                 {
                     Console.WriteLine("You have entered an invalid number");
                     Console.WriteLine();
-                    renewSeasonPass();
+                    RenewSeasonPass();
                 }
             }
         }

@@ -27,6 +27,9 @@ namespace SE_ASG.Models
         {
             myParking = parking;
         }
+        public Active()
+        {
+        }
 
         public void TerminatePass(string reason)
         {
@@ -52,8 +55,8 @@ namespace SE_ASG.Models
             //myParking.setState(myParking.active);
             DateOnly currentDate = DateOnly.FromDateTime(DateTime.Today);
             DateOnly endDate = currentDate.AddMonths(1);
-            newEndDate = endDate;
-            Console.WriteLine($"End date has been updated to {newEndDate}");
+            string formattedEndDate = endDate.ToString("dd/MM/yyyy");
+            Console.WriteLine($"Date of expiry has been updated to {formattedEndDate}.");
 
         }
 
