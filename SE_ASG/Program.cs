@@ -377,7 +377,7 @@ namespace SE_ASG.Models
                             //formatting date to 1 month after date of renewal
                             DateOnly currentDate = DateOnly.FromDateTime(DateTime.Today);
                             DateOnly endDate = currentDate.AddMonths(1);
-                            Active active = new Active(); // Create an instance of Active
+                            Active active = new(); // Create an instance of Active
                                                           //string formattedDate = endDate.ToString("dd/MM/yyyy"); // Format newEndDate to "dd/MM/yyyy"
                                                           //Console.WriteLine($"Renewal date: {formattedDate}");
                             active.RenewPass(endDate);
@@ -397,7 +397,7 @@ namespace SE_ASG.Models
                                 //formatting date to 1 month after date of renewal
                                 DateOnly currentDate = DateOnly.FromDateTime(DateTime.Today);
                                 DateOnly endDate = currentDate.AddMonths(1);
-                                Active active = new Active(); // Create an instance of Active
+                                Active active = new(); // Create an instance of Active
                                 //string formattedDate = endDate.ToString("dd/MM/yyyy"); // Format newEndDate to "dd/MM/yyyy"
                                 //Console.WriteLine($"Renewal date: {formattedDate}");
                                 active.RenewPass(endDate);
@@ -454,7 +454,7 @@ namespace SE_ASG.Models
                             //formatting date to 1 month after date of renewal
                             DateOnly currentDate = DateOnly.FromDateTime(DateTime.Today);
                             DateOnly endDate = currentDate.AddMonths(1);
-                            Active active = new Active(); // Create an instance of Active
+                            Active active = new(); // Create an instance of Active
                                                           //string formattedDate = endDate.ToString("dd/MM/yyyy"); // Format newEndDate to "dd/MM/yyyy"
                                                           //Console.WriteLine($"Renewal date: {formattedDate}");
                             active.RenewPass(endDate);
@@ -474,7 +474,7 @@ namespace SE_ASG.Models
                                 //formatting date to 1 month after date of renewal
                                 DateOnly currentDate = DateOnly.FromDateTime(DateTime.Today);
                                 DateOnly endDate = currentDate.AddMonths(1);
-                                Active active = new Active(); // Create an instance of Active
+                                Active active = new(); // Create an instance of Active
                                 //string formattedDate = endDate.ToString("dd/MM/yyyy"); // Format newEndDate to "dd/MM/yyyy"
                                 //Console.WriteLine($"Renewal date: {formattedDate}");
                                 active.RenewPass(endDate);
