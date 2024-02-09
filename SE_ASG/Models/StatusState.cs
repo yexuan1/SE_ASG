@@ -133,5 +133,10 @@ namespace SE_ASG.Models
             //Implementation
             myParking.setState(myParking.active);
         }
+
+        public void Destroy()
+        {
+            //Implementation
+        }
     }
 }
