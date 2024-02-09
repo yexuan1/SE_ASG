@@ -10,6 +10,23 @@ namespace SE_ASG.Models
     {
         private string paymentType {  get; set; }
 
+        private string cardName { get; set; }
+        private int cardNumber { get; set; }
+        private int cvc { get; set; }
+
+        public PaymentMethod(string cardname, int cardNumber, int cvc)
+        {
+            this.cardName = cardname;
+            this.cardNumber = cardNumber;
+            this.cvc = cvc;
+        }
+
+        public bool InitiateTransaction(PaymentMethod paymentmethod)
+        {
+            //Implementation
+            return true;
+        }
+
         public PaymentMethod(string PaymentType)
         {
             paymentType = PaymentType;

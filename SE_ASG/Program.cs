@@ -87,7 +87,7 @@ namespace SE_ASG.Models
                     Console.WriteLine("===========================================================");
                 }
 
-                Console.WriteLine("Please select an application to process (enter the number 1 to 5):");
+                Console.WriteLine("Please select an application to process (enter the number 1 to 5, or 0 to go back to Main Menu):");
                 string choice = Console.ReadLine();
 
                 if (int.TryParse(choice, out int index))
