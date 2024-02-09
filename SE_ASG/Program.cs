@@ -60,64 +60,16 @@ namespace SE_ASG.Models
         }
 
         static void processSeasonPass()
-        {  
+        {
 
             bool return_to_main_menu = true;
             while (return_to_main_menu)
             {
-                // Define a list of applications
-                List<Dictionary<string, string>> applications = new List<Dictionary<string, string>>();
 
-                Dictionary<string, string> application1 = new Dictionary<string, string>();
-                application1.Add("Name", "Jerel Sim");
-                application1.Add("StudentID", "S10343578G");
-                application1.Add("Start month", "January");
-                application1.Add("End month", "March");
-                application1.Add("Vehicle type", "Lorry");
-                application1.Add("License plate number", "S1241KFUCA");
-                application1.Add("Unit Identifier", "awleghasedoug");
-                applications.Add(application1);
+                // Create an instance of SeasonParkingApplication to access the list of applications
+                SeasonParkingApplication seasonParkingApp = new SeasonParkingApplication();
 
-
-                Dictionary<string, string> application2 = new Dictionary<string, string>();
-                application2.Add("Name", "Emily Chen");
-                application2.Add("StudentID", "S10343579G");
-                application2.Add("Start month", "February");
-                application2.Add("End month", "April");
-                application2.Add("Vehicle type", "Van");
-                application2.Add("License plate number", "S6789JKLCA");
-                application2.Add("Unit Identifier", "dserhegnkjdsf");
-                applications.Add(application2);
-
-                Dictionary<string, string> application3 = new Dictionary<string, string>();
-                application3.Add("Name", "Sophia Lee");
-                application3.Add("StudentID", "S10343580G");
-                application3.Add("Start month", "March");
-                application3.Add("End month", "May");
-                application3.Add("Vehicle type", "Car");
-                application3.Add("License plate number", "S9876XYZCA");
-                application3.Add("Unit Identifier", "gdfhsgdfh");
-                applications.Add(application3);
-
-                Dictionary<string, string> application4 = new Dictionary<string, string>();
-                application4.Add("Name", "Michael Wong");
-                application4.Add("StudentID", "S10343581G");
-                application4.Add("Start month", "April");
-                application4.Add("End month", "June");
-                application4.Add("Vehicle type", "Motorcycle");
-                application4.Add("License plate number", "S5432ABCMA");
-                application4.Add("Unit Identifier", "sdfjksdfh");
-                applications.Add(application4);
-
-                Dictionary<string, string> application5 = new Dictionary<string, string>();
-                application5.Add("Name", "Isabella Smith");
-                application5.Add("StudentID", "S10343582G");
-                application5.Add("Start month", "May");
-                application5.Add("End month", "July");
-                application5.Add("Vehicle type", "Truck");
-                application5.Add("License plate number", "S1111QWERCA");
-                application5.Add("Unit Identifier", "dfhsgfsh");
-                applications.Add(application5);
+                var applications = seasonParkingApp.Applications;
 
                 Console.WriteLine("Welcome admin! This is the new application for you to view");
                 Console.WriteLine("===========================================================");
@@ -135,50 +87,78 @@ namespace SE_ASG.Models
                 Console.WriteLine("Please select an application to process (enter the number 1 to 5):");
                 string choice = Console.ReadLine();
 
-                if (int.TryParse(choice, out int index) && index >= 1 && index <= applications.Count)
+                if (int.TryParse(choice, out int index))
                 {
-                    Console.WriteLine();
-                    Console.WriteLine("You selected Application " + index);
-                    Console.WriteLine("1. Approve Application");
-                    Console.WriteLine("2. Deny Application");
-                    string actionChoice = Console.ReadLine();
-
-                    if (actionChoice == "1")
+                    if (index == 0) // Exit condition
                     {
-                        Console.WriteLine();
-                        Console.WriteLine("==========================================");
-                        Console.WriteLine("Approving Application...");
-                        Console.WriteLine("Status updated from Pending to Approved");
-                        Console.WriteLine("System notify user of application approval");
-                        Console.WriteLine("System issue user seasonal pass");
-                        Console.WriteLine("==========================================");
+                        return_to_main_menu = false;
+                        continue; // Skip the rest of the loop and exit
                     }
-                    else if (actionChoice == "2")
+                    else if (index >= 1 && index <= applications.Count)
                     {
+                        // Store the selected application's details
+                        Dictionary<string, string> selectedApplication = applications[index - 1];
+
                         Console.WriteLine();
-                        Console.WriteLine("==========================================");
-                        Console.WriteLine("Denying Application...");
-                        Console.WriteLine("Status updated from Pending to Denied");
-                        Console.WriteLine("System notify user of application Denial");
-                        Console.WriteLine("==========================================");
+                        Console.WriteLine("You selected Application " + index);
+                        Console.WriteLine("1. Approve Application");
+                        Console.WriteLine("2. Deny Application");
+                        string actionChoice = Console.ReadLine();
+
+                        if (actionChoice == "1")
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("==========================================");
+                            Console.WriteLine("Approving Application...");
+                            Console.WriteLine("Status updated from Pending to Approved");
+                            Console.WriteLine("System notify user of application approval");
+                            Console.WriteLine("System issue user seasonal pass");
+                            Console.WriteLine("==========================================");
+
+                            // Print selected application's details after processing
+                            PrintApplicationDetails(selectedApplication);
+                        }
+                        else if (actionChoice == "2")
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("==========================================");
+                            Console.WriteLine("Denying Application...");
+                            Console.WriteLine("Status updated from Pending to Denied");
+                            Console.WriteLine("System notify user of application Denial");
+                            Console.WriteLine("==========================================");
+
+                            // Print selected application's details after processing
+                            PrintApplicationDetails(selectedApplication);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid input. Please enter either '1' or '2'.");
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("Invalid input. Please enter either '1' or '2'.");
+                        Console.WriteLine($"Invalid input. Please enter a number from 1 to {applications.Count}.");
+                    }
+
+                    Console.WriteLine("Do you want to process another application? (yes/no):");
+                    string continueChoice = Console.ReadLine();
+                    if (continueChoice.ToLower() != "yes")
+                    {
+                        return_to_main_menu = false;
                     }
                 }
-                else
-                {
-                    Console.WriteLine($"Invalid input. Please enter a number from 1 to {applications.Count}.");
-                }
-
-                Console.WriteLine("Do you want to process another application? (yes/no):");
-                string continueChoice = Console.ReadLine();
-                if (continueChoice.ToLower() != "yes")
-                {
-                    return_to_main_menu = false;
-                }
             }
+        }
+
+        // Method to print application details
+        static void PrintApplicationDetails(Dictionary<string, string> application)
+        {
+            Console.WriteLine("Selected Application Details:");
+            foreach (var detail in application)
+            {
+                Console.WriteLine($"{detail.Key}: {detail.Value}");
+            }
+            Console.WriteLine("===========================================================");
         }
         static void terminateSeasonPass()
         {
